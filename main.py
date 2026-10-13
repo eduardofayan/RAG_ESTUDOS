@@ -29,7 +29,7 @@ def perguntar():
         embedding_function=funcao_embedding,
         )
     # Comparar a pergunta do usuario (embedding) com os embeddings da base de conhecimento (Banco de dados)
-    resultados = db.similarity_search_with_relevance_scores(pergunta, k=3)
+    resultados = db.similarity_search_with_relevance_scores(pergunta, k=5)
 
     # Imprimir os resultados da busca de similaridade para depuração
     """ print(resultados) """
@@ -37,7 +37,7 @@ def perguntar():
     # Imprimir a quantidade de resultados encontrados para depuração
     """ print(len(resultados)) """
     
-    if len(resultados) == 0 or resultados[0][1] < 0.7:
+    if len(resultados) == 0 or resultados[0][1] < 0.6:
         print("Não sei")
         return
     textos_resultados = []
